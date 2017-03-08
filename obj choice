@@ -1,0 +1,49 @@
+//creat event
+pos=0;
+hpos=160;
+vpos=310;
+a[0]=lvl1; // sprite
+a[1]=lvl2;
+a[2]=lvl3;
+//step event 
+if (keyboard_check_pressed(vk_left))
+{
+ pos=pos-1;
+ 
+}
+ if (keyboard_check_pressed(vk_right))
+ {
+ pos=pos+1;
+ }
+ if (pos<0)
+ {pos=array_length_1d(a)-1;
+ }
+ if (pos > array_length_1d(a)-1)
+ {
+ pos =0;
+ }
+ if (keyboard_check_pressed(vk_enter))
+ {switch (pos)
+ {
+ case 0 : 
+ room_goto (Level_1);
+ break;
+ case 1 : 
+ room_goto (Lvl_2);
+ break;
+ case 2 :
+ room_goto(Lvl_3);
+ break;
+ default : break;
+ }
+ }
+//draw event
+for (i:=0 ; i<array_length_1d(a);i++)
+{
+draw_sprite (a[i],0,x+vpos*i,y-hpos);
+}
+draw_sprite (sprite_index,0,x+vpos*pos,y);
+draw_set_font(tiltle);
+draw_set_colour (c_lime);
+draw_text (410,80,"LEVEL SELECT");
+
