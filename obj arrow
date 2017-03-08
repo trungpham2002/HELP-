@@ -1,0 +1,7 @@
+//creat event
+Menus[0]='Start';
+Menus[2]='Exit';
+Menus[1]='Level Select';
+hspace=100;
+vspace=200;
+mpos=0;
