@@ -5,3 +5,48 @@ Menus[1]='Level Select';
 hspace=100;
 vspace=200;
 mpos=0;
+//step event 
+if ( keyboard_check_pressed (vk_up))
+{
+mpos=mpos-1;
+}
+if ( keyboard_check_pressed (vk_down))
+{
+mpos=mpos+1;
+}
+if mpos > array_length_1d(Menus)-1
+{
+mpos=0;
+}
+if mpos < 0
+{mpos=array_length_1d(Menus)-1};
+if (keyboard_check_pressed(vk_enter))
+{
+switch(mpos)
+{
+case 0 :
+room_goto_next();
+break;
+case 1 :
+room_goto_next();
+break;
+case 2:  
+game_end ()
+break;
+default : 
+break;
+
+}
+}
+// draw event 
+draw_set_font(Harlow);
+draw_set_color(c_green);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+var i;
+for (i=0 ;i<=2;i+=1) 
+{
+draw_text (x+vspace,y+(hspace*i),string(Menus[i]));
+}
+draw_sprite (sprite_index,0,x, y+mpos*hspace);
+
